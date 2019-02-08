@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dal.JudgeInfoDao">
+	<insert id="insert" parameterType="JudgeInfo">
+		insert into judgeInfo
+		values(null,#{teacherId},#{studentId},#{courseName},
+		#{optionValue},#{totalScore},#{studySummary})
+	</insert>
+
+	<delete id="deleteByJudgeId" parameterType="int">
+		delete from judgeInfo where
+		judgeId=#{judgeId}
+	</delete>
+	<delete id="deleteByTeacherId" parameterType="int">
+		delete from judgeInfo where teacherId=#{teacherId}
+	</delete>
+	<delete id="deleteByStudentId" parameterType="int">
+		delete from judgeInfo where studentId=#{studentId}
+	</delete>
+	<delete id="deleteByCourseName" parameterType="String">
+		delete from judgeInfo where courseName=#{courseName}
+	</delete>
+
+	<select id="selectAll" resultType="JudgeInfo">
+		select * from judgeInfo
+	</select>
+	<select id="selectByJudgeId" parameterType="int" resultType="JudgeInfo">
+	select * from judgeInfo where judgeId=#{judgeId}</select>
+	<select id="selectByTeacherId" parameterType="int" resultType="JudgeInfo">
+		select * from judgeInfo where teacherId=#{teacherId}
+	</select>
+	<select id="selectByStudentId" parameterType="int" resultType="JudgeInfo">
+		select * from judgeInfo where studentId=#{studentId}
+	</select>
+	<select id="selectByStudentIdAndCourseName" parameterType="map" resultType="JudgeInfo">
+		select * from judgeInfo where studentId=#{studentId} and 
+		courseName=#{courseName}
+	</select>
+	<select id="selectByTeacherIdAndCourseName" parameterType="map" resultType="JudgeInfo">
+		select * from judgeInfo where teacherId=#{teacherId} and
+		courseName=#{courseName}
+	</select>
+	<select id="selectByTotalScore" parameterType="int"
+		resultType="JudgeInfo">
+		select * from judgeInfo where totalScore=#{totalScore}
+	</select>
+	<select id="selectBystudySummary" parameterType="String"
+		resultType="JudgeInfo">
+		select * from judgeInfo where studySummary like
+		"%"#{studySummary}"%"
+	</select>
+	<update id="update" parameterType="JudgeInfo">
+		update judgeInfo set
+		teacherId=#{teacherId},studentId=#{studentId},
+		courseName=#{courseName},optionValue=#{optionValue},totalScore=#{totalScore},
+		studySummary=#{studySummary} where judgeId=#{judgeId}
+	</update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

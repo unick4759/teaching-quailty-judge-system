@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dal.TeacherInfoDao">
+	<insert id="insert" parameterType="TeacherInfo">
+		insert into teacherInfo
+		values(null,#{username},#{password},#{state},#{teacherName},#{elseInfomation})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from teacherInfo where
+		teacherId=#{teacherId}
+	</delete>
+	<select id="selectByTeacherId" parameterType="int"
+		resultType="TeacherInfo">
+		select * from teacherInfo where teacherId=#{teacherId}
+	</select>
+	<select id="selectAll" resultType="TeacherInfo">
+		select * from teacherInfo
+	</select>
+	<select id="selectByUsernamePassword" parameterType="map"
+		resultType="TeacherInfo">
+		select * from teacherInfo where username=#{username} and
+		password=#{password}
+	</select>
+	<update id="update" parameterType="TeacherInfo">
+		update teacherInfo set
+		username=#{username},password=#{password},
+		state=#{state},teacherName=#{teacherName},elseInfomation=#{elseInfomation}
+		where teacherId=#{teacherId}
+	</update>
+</mapper>

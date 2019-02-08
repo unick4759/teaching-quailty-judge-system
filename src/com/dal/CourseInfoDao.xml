@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dal.CourseInfoDao">
+	<insert id="insert" parameterType="CourseInfo">
+		insert into courseInfo
+		values(null,#{courseName},#{majorName},#{teacherId},#{teacherName},#{studentId})
+	</insert>
+
+	<delete id="deleteByCourseId" parameterType="int">
+		delete from
+		courseInfo where courseId=#{courseId}
+	</delete>
+
+	<delete id="deleteByCourseName" parameterType="String">
+		delete from
+		courseInfo where courseName=#{courseName}
+	</delete>
+	<delete id="deleteByTeacherId" parameterType="int">
+		delete from
+		courseInfo where teacherId=#{teacherId}
+	</delete>
+	<select id="selectAll" resultType="CourseInfo">
+		select * from courseInfo
+	</select>
+	<select id="selectByCourseId" parameterType="int"
+		resultType="CourseInfo">
+		select * from courseInfo where courseId=#{courseId}
+	</select>
+	<select id="selectByTeacherId" parameterType="int"
+		resultType="CourseInfo">
+		select * from courseInfo where teacherId=#{teacherId}
+	</select>
+	<select id="selectByCourseName" resultType="CourseInfo"
+		parameterType="String">
+		select * from courseInfo where courseName=#{courseName}
+	</select>
+	<select id="selectByMajorName" parameterType="String"
+		resultType="CourseInfo">
+		select * from courseInfo where majorName=#{majorName}
+	</select>
+	<select id="selectByStudentId" parameterType="int"
+		resultType="CourseInfo">
+		select * from courseInfo where studentId=#{studentId}
+	</select>
+	<update id="update" parameterType="CourseInfo">
+		update courseInfo set
+		courseName=#{courseName},majorName=#{majorName},teacherId=#{teacherId},teacherName=#{teacherName}
+		where courseId=#{courseId}
+	</update>
+
+
+
+
+
+</mapper>

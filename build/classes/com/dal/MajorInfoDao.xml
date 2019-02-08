@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dal.MajorInfoDao">
+	<insert id="insert" parameterType="MajorInfo">
+		insert into majorInfo
+		values(null,#{majorName})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from majorInfo where
+		majorId=#{majorId}
+	</delete>
+
+	<select id="selectByMajorId" parameterType="int"
+		resultType="MajorInfo">
+		select * from majorInfo where majorId=#{majorId}
+	</select>
+
+	<select id="selectAll" resultType="MajorInfo">
+		select * from majorInfo
+	</select>
+	<update id="update" parameterType="MajorInfo">
+		update majorInfo set
+		majorId=#{majorId},majorName=#{majorName} where
+		majorId=#{majorId}
+	</update>
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dal.ManagerInfoDao">
+	<insert id="insert" parameterType="ManagerInfo">
+		insert into managerInfo
+		values(null,#{username},#{password})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from managerInfo where
+		managerId=#{managerId}
+	</delete>
+
+	<select id="selectById" parameterType="int" resultType="ManagerInfo">
+		select * from managerInfo
+		where managerId=#{managerId}
+	</select>
+
+	<select id="selectByUsernamePassword" parameterType="map"
+		resultType="ManagerInfo">
+		select * from managerInfo where username=#{username} and
+		password=#{password}
+	</select>
+	<select id="selectAll" resultType="ManagerInfo">
+	select * from managerInfo
+	</select>
+	<update id="update" parameterType="ManagerInfo">
+		update managerInfo set
+		username=#{username},password=#{password}
+		where managerId=#{managerId}
+	</update>
+</mapper>
